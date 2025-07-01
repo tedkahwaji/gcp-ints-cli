@@ -1,4 +1,4 @@
-module github.com/teddykahwaji/cli
+module github.com/tedkahwaji/gcp-ints-cli
 
 go 1.24.4
 
