@@ -4,8 +4,25 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 */
 package main
 
-import "github.com/teddykahwaji/cli/cmd"
+import (
+	"context"
+
+	"github.com/tedkahwaji/gcp-ints-cli/cli/cmd"
+	"github.com/tedkahwaji/gcp-ints-cli/cli/googlecloud"
+	"github.com/tedkahwaji/gcp-ints-cli/cli/service"
+)
 
 func main() {
-	cmd.Execute()
+	ctx := context.Background()
+
+	projectsClient, err := googlecloud.NewProjectsClient(ctx)
+	if err != nil {
+		return
+	}
+
+	service := &service.Service{
+		ProjectsClient: projectsClient,
+	}
+
+	cmd.Execute(service)
 }
